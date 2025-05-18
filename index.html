@@ -1,0 +1,51 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mood Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Mood Tracker</h1>
+    <button class="dark-mode-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+  </header>
+  <div class="controls">
+    <button onclick="changeMonth(-1)" aria-label="Previous month">← Prev</button>
+    <span id="monthLabel"></span>
+    <button onclick="changeMonth(1)" aria-label="Next month">Next →</button>
+  </div>
+  <div class="calendar" id="calendar" role="grid" aria-label="Calendar for mood tracking"></div>
+
+  <div class="mood-log">
+    <p>Select Mood:</p>
+    <div id="moodSelect" role="radiogroup" aria-label="Select your mood">
+      <span class="mood-option" data-mood="😊" data-label="Happy" onclick="selectMood('😊', 'Happy')" role="radio" aria-label="Happy mood" tabindex="0">😊</span>
+      <span class="mood-option" data-mood="🙂" data-label="Content" onclick="selectMood('🙂', 'Content')" role="radio" aria-label="Content mood" tabindex="0">🙂</span>
+      <span class="mood-option" data-mood="😐" data-label="Neutral" onclick="selectMood('😐', 'Neutral')" role="radio" aria-label="Neutral mood" tabindex="0">😐</span>
+      <span class="mood-option" data-mood="😢" data-label="Sad" onclick="selectMood('😢', 'Sad')" role="radio" aria-label="Sad mood" tabindex="0">😢</span>
+      <span class="mood-option" data-mood="😣" data-label="Angry" onclick="selectMood('😣', 'Angry')" role="radio" aria-label="Angry mood" tabindex="0">😣</span>
+      <span class="mood-option" data-mood="😴" data-label="Tired" onclick="selectMood('😴', 'Tired')" role="radio" aria-label="Tired mood" tabindex="0">😴</span>
+    </div>
+    <input type="text" id="noteInput" placeholder="Add a note (max 100 characters)" maxlength="100" aria-label="Note for selected mood" />
+    <button id="saveButton" onclick="saveMood()" aria-label="Save mood">Save Mood</button>
+    <button onclick="resetMoodData()" aria-label="Reset all mood data">Reset Data</button>
+  </div>
+
+  <div class="statistics">
+    <button onclick="showStats('week')" aria-label="Show weekly trends">Weekly Trends</button>
+    <button onclick="showStats('lastMonth')" aria-label="Show last month trends">Last Month</button>
+    <button onclick="showStats('year')" aria-label="Show yearly history">Yearly History</button>
+    <div id="statsDisplay" aria-live="polite"></div>
+  </div>
+
+  <footer>
+    <p>Track your mood daily for better emotional awareness</p>
+    <p>© 2025 Mood Tracker</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
